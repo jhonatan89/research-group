@@ -1,0 +1,53 @@
+
+<div class="grid-container">
+    <div class="btn-align-left">
+		<button type="button" class="btn btn-default" (click)="goBack()">
+			<span class="oi oi-minus"></span> {{'back' | translate}}
+		</button>
+	</div>
+  
+  	<h3 *ngIf="researchgroupFromParent; else createTitle">{{'edit' | translate}}</h3>
+  	<ng-template #createTitle><h3>{{'create' | translate}}</h3></ng-template>
+	<form [formGroup]="formGroupStep1" (ngSubmit)="saveResearchGroup(researchGroup)">
+	 
+		<div class="form-group">
+			<label for="form-name">Name</label>
+			<input type="text" class="form-control" [(ngModel)]="researchGroup.name" id="form-name" name="name" placeholder="Name" formControlName="nameCtrl" required>
+ 		</div>
+	 
+		<div class="form-group">
+			<label for="form-externalId">ExternalId</label>
+			<input type="text" class="form-control" [(ngModel)]="researchGroup.externalId" id="form-externalId" name="externalId" placeholder="ExternalId" formControlName="externalIdCtrl" >
+ 		</div>
+	 
+		<div class="form-group">
+			<label for="form-director">Director</label>
+			<input type="text" class="form-control" [(ngModel)]="researchGroup.director" id="form-director" name="director" placeholder="Director" formControlName="directorCtrl" >
+ 		</div>
+	 
+		<div class="form-group">
+			<label for="form-colcienciasCode">ColcienciasCode</label>
+			<input type="text" class="form-control" [(ngModel)]="researchGroup.colcienciasCode" id="form-colcienciasCode" name="colcienciasCode" placeholder="ColcienciasCode" formControlName="colcienciasCodeCtrl" >
+ 		</div>
+	 
+		<div class="form-group">
+			<label for="form-categorty">Categorty</label>
+			<input type="text" class="form-control" [(ngModel)]="researchGroup.categorty" id="form-categorty" name="categorty" placeholder="Categorty" formControlName="categortyCtrl" >
+ 		</div>
+	 
+		<div class="form-group">
+			<mat-slide-toggle formControlName="activeCtrl" [color]="primary" [(ngModel)]="researchGroup.active" >Active</mat-slide-toggle>
+ 		</div>
+	 
+		<div class="form-group">
+			<label for="form-webSite">WebSite</label>
+			<input type="text" class="form-control" [(ngModel)]="researchGroup.webSite" id="form-webSite" name="webSite" placeholder="WebSite" formControlName="webSiteCtrl" >
+ 		</div>
+	 
+
+    
+	    <div align="center">
+	    	<button type="submit" class="btn btn-primary btn-lg" [disabled]="!formGroupStep1.valid">{{'save' | translate}}</button>
+<button *ngIf="this.isEditForm" type="button" class="btn btn-default" (click)="goBack()">{{'cancel' | translate}}</button>	    </div>
+	</form>
+</div>
